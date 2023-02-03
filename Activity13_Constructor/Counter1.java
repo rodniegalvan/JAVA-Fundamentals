@@ -1,10 +1,10 @@
-public class Activity12_Counter {
+public class Counter1 {
     //These are called "member variables" or "instance variable"
     String name;
     int value = 0;
 
         //This is a special method called "constructor"
-    public Activity12_Counter(String name){
+    public Counter1(String name){
         this.name = name;
         System.out.println("Counter '" + name + "' created");
     }

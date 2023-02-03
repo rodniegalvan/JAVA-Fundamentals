@@ -1,11 +1,11 @@
-public class Activity12_CounterMain {
+public class CounterMain1 {
 
 
     public static void main(String[] args) {
         //Creates new instances (objects) of the class Counter.
         //NOTE: This automatically calls the constructor method
-        Activity12_Counter counter1 = new Activity12_Counter("First Counter");
-        Activity12_Counter counter2 = new Activity12_Counter("Second Counter");
+        Counter1 counter1 = new Counter1("First Counter");
+        Counter1 counter2 = new Counter1("Second Counter");
 
         //Call class methods on the objects
         counter1.increment();
