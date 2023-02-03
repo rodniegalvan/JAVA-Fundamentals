@@ -52,20 +52,6 @@ public class Activity11_MemorableQuotes{
             System.out.println("An error occurred while updating data in the file: " + e.getMessage());
         }
     }
-    public static void deleteQuotes(){
-        try {
-            FileWriter writer = new FileWriter("Quotes.txt");
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            for (String str : quotes) {
-                bufferedWriter.write(str);
-
-                bufferedWriter.newLine();
-            }
-            bufferedWriter.close();
-        } catch (IOException e) {
-            System.out.println("An error occurred while updating data in the file: " + e.getMessage());
-        }
-    }
 
     public static String printQuotes(String quote){
         String strQuote = quote;
