@@ -48,7 +48,6 @@ public class Activity11_MemorableQuotes{
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
-            System.out.println("Data updated in file successfully!");
         } catch (IOException e) {
             System.out.println("An error occurred while updating data in the file: " + e.getMessage());
         }
