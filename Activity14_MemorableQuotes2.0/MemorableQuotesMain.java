@@ -11,7 +11,6 @@ public class MemorableQuotesMain {
                 ArrayList<MemorableQuote> quotes = db.getAllQuotes();
                 for (MemorableQuote quote : quotes) {
                     quote.printQuote();
-                    System.out.println();
                 }
             } else if (args[0].equals("random")) {
                 MemorableQuote quote = db.getRandomQuote();

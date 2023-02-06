@@ -44,7 +44,6 @@ public class Activity11_MemorableQuotes{
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             for (String str : quotes) {
                 bufferedWriter.write(str);
-
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
@@ -174,7 +173,7 @@ public class Activity11_MemorableQuotes{
         switch(args[0]){
             case "add":
                 System.out.println("Enter your New Quotes(Quotes@Author@Category)");
-                String writeQuotes = input.nextLine();
+                String writeQuotes = input.nextLine()+"@0";
                 quotes.add(writeQuotes);
                 addQuotes();
                 break;
@@ -184,7 +183,7 @@ public class Activity11_MemorableQuotes{
                 int lineNumber = input.nextInt();
                 input.nextLine();
                 System.out.println("Enter your Updated Quotes(Quotes@Author@Category)");
-                String newLineText = input.nextLine();
+                String newLineText = input.nextLine()+"@0";
                 // Update the specific line in the ArrayList
                 quotes.set(lineNumber - 1, newLineText);
                 // Write the updated data back to the file

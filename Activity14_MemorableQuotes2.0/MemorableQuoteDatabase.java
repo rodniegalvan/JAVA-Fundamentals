@@ -7,8 +7,6 @@ public class MemorableQuoteDatabase {
     
     public MemorableQuoteDatabase() {
         quotes = new ArrayList<MemorableQuote>();
-
-        quotes = new ArrayList<>();
         rand = new Random();
     }
     
