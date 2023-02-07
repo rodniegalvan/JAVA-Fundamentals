@@ -21,6 +21,13 @@ public class MemorableQuoteDatabase {
     public int getQuoteCount() {
         return quotes.size();
     }
+    public ArrayList<String> getCategory() {
+        ArrayList<String> categoryList = new ArrayList<>();
+        for (MemorableQuote quote : quotes) {
+            categoryList.add(quote.getCategory());
+        }
+        return categoryList;
+    }
     
     public MemorableQuote getQuoteByIndex(int n) {
         return quotes.get(n);
@@ -37,7 +44,13 @@ public class MemorableQuoteDatabase {
         int randomIndex = rand.nextInt(quotes.size());
         return quotes.get(randomIndex);
     }
-    
+    public void displayQuotes(String category) {
+        for (MemorableQuote quote : quotes) {
+          if (category == null || category.equals(quote.getCategory())) {
+            quote.printQuote();
+          }
+        }
+    }
     public ArrayList<MemorableQuote> searchQuotes(String text) {
         ArrayList<MemorableQuote> result = new ArrayList<>();
         for (MemorableQuote quote : quotes) {
@@ -46,5 +59,15 @@ public class MemorableQuoteDatabase {
             }
         }
         return result;
+    }
+    public ArrayList<MemorableQuote> displayCategory(String category) {
+        ArrayList<MemorableQuote> categResult = new ArrayList<>();
+        for (MemorableQuote quote : quotes) {
+          if (category.equals(quote.getCategory())) {
+            categResult.add(quote);
+            System.out.println("dfgsdgsssssssssssssssssssssDF"+categResult);
+          }
+        }
+        return categResult;
     }
 }

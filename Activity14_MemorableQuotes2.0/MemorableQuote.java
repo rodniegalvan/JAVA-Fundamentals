@@ -1,17 +1,15 @@
 public class MemorableQuote {
     private String quoteText;
     private String reference;
+    private int count;
+    private String category;
     
-    // constructor with quote text
-    public MemorableQuote(String quoteText) {
-        
-        this.quoteText = quoteText;
-    }
-    
-    // constructor with quote text and reference
-    public MemorableQuote(String quoteText, String reference) {
+    // constructor with quote text, reference and count
+    public MemorableQuote(String quoteText, String reference, int count, String category) {
         this.quoteText = quoteText;
         this.reference = reference;
+        this.count = count;
+        this.category = category;
     }
     
     // getter and setter for quote text
@@ -31,19 +29,36 @@ public class MemorableQuote {
     public void setReference(String reference) {
         this.reference = reference;
     }
+    // getter and setter for count
+    public int getCount() {
+        return count;
+    }
+    public void setCount(int count) {
+        this.count = count;
+    }
+    // getter and setter for category
+    public String getCategory() {
+        return category;
+    }
+    
+    public void setCategory(String category) {
+        this.category = category;
+    }
     
     // method to check if quote or reference contains the text
     public boolean matches(String text) {
         return quoteText.toLowerCase().contains(text.toLowerCase()) || 
-            (reference != null && reference.toLowerCase().contains(text.toLowerCase()));
+            (reference != null && reference.toLowerCase().contains(text.toLowerCase()))
+            || category.toLowerCase().contains(text.toLowerCase());
     }
     
     // method to print quote
     public void printQuote() {
+        count++;
         if (reference == null) {
-            System.out.println(quoteText);
+            System.out.println(count + " "+ quoteText);
         } else {
-            System.out.println(quoteText + "\n-- " + reference);
+            System.out.println(count + " " + quoteText + "\n\t-- " + reference);
         }
     }
 }
