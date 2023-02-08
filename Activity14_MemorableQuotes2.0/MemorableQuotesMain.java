@@ -113,6 +113,17 @@ public class MemorableQuotesMain {
 
               }
               break;
+            case "add":
+                System.out.println("Enter your New Quotes(Quotes@Author@0@Category)");
+                ArrayList<String> addQuotes = new ArrayList<String>();
+                ArrayList<MemorableQuote> quotes2 = db.getAllQuotes();
+                String writeQuotes = input.nextLine();
+                for(MemorableQuote quote: quotes2){
+                  addQuotes.add(quote.getQuoteText() +"@"+ quote.getReference() +"@"+ quote.getCount() +"@"+ quote.getCategory());
+                }
+                addQuotes.add(writeQuotes);
+                db.addQuotes(addQuotes, filename);
+              break;
             default:
                   System.out.println("Invalid argument. Use either 'all', 'random', 'display', or 'search <string>'");
               }

@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.management.MemoryNotificationInfo;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -129,4 +128,19 @@ public class MemorableQuoteDatabase {
             System.out.println("An error occurred while updating data in the file: " + e.getMessage());
         }
     }
+    public void addQuotes(ArrayList<String>quote1, String filename){
+        try {
+            FileWriter writer = new FileWriter(filename);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            for (String str : quote1) {
+                bufferedWriter.write(str);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+            System.out.println("Data written to file successfully!");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing data to the file: " + e.getMessage());
+        }
+    }
+    
 }
