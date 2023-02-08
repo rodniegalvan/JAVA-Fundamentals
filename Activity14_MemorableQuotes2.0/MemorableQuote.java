@@ -61,4 +61,7 @@ public class MemorableQuote {
             System.out.println(count + " " + quoteText + "\n\t-- " + reference);
         }
     }
+    public void resetQuoteCount(){
+        this.count = 0;
+    }
 }

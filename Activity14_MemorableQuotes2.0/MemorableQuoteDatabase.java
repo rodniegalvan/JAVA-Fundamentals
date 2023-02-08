@@ -1,5 +1,12 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.management.MemoryNotificationInfo;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class MemorableQuoteDatabase {
     private ArrayList<MemorableQuote> quotes;
@@ -65,9 +72,61 @@ public class MemorableQuoteDatabase {
         for (MemorableQuote quote : quotes) {
           if (category.equals(quote.getCategory())) {
             categResult.add(quote);
-            System.out.println("dfgsdgsssssssssssssssssssssDF"+categResult);
           }
         }
         return categResult;
+    }
+    public boolean readFromFile(String filename) {
+        File file = new File(filename);
+        try (Scanner sc = new Scanner(file)) {
+          while (sc.hasNextLine()) {
+            String line = sc.nextLine();
+            String[] parts = line.split("@");
+            int count = Integer.parseInt(parts[2]);
+            quotes.add(new MemorableQuote(parts[0], parts[1], count, parts[3]));
+          }
+          return true;
+        } catch (FileNotFoundException e) {
+          System.out.println("File not found: " + filename);
+          return false;
+        }
+    }
+    public boolean writeToFile(String filename) {
+        try {
+            FileWriter writer = new FileWriter(filename);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            ArrayList<String> write = new ArrayList<>();
+            for(MemorableQuote quote: quotes){
+                write.add(quote.getQuoteText() +"@"+ quote.getReference() +"@"+ quote.getCount() +"@"+ quote.getCategory());
+            }
+            for (String str : write) {
+                bufferedWriter.write(str);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+            return true;
+        } 
+        catch (IOException e) {
+            System.out.println("An error occurred while updating data in the file: " + e.getMessage());
+            return false;
+        }
+    }
+    public void deleteQuotes(int index){
+        try {
+            FileWriter writer = new FileWriter("Quotes.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            ArrayList<String> write = new ArrayList<>();
+            for(MemorableQuote quote: quotes){
+                write.add(quote.getQuoteText() +"@"+ quote.getReference() +"@"+ quote.getCount() +"@"+ quote.getCategory());
+            }
+            write.remove(index);
+            for (String str : write ){
+                bufferedWriter.write(str);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred while updating data in the file: " + e.getMessage());
+        }
     }
 }
