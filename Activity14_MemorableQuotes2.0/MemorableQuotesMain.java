@@ -71,7 +71,6 @@ public class MemorableQuotesMain {
               break;
             case "display":
                 if (args.length >= 2) {
-                  String categoryDisplay=null;
                   MemorableQuotesDisplay display = new MemorableQuotesDisplay(db);
                   for (int i = 1; i < args.length; i++) {
                     String[] parts = args[i].split("=");
@@ -79,8 +78,6 @@ public class MemorableQuotesMain {
                       display.setDelayBetweenQuotes(Integer.parseInt(parts[1]));
                     } else if (parts[0].equals("max")) {
                       display.setMaxQuotesToDisplay(Integer.parseInt(parts[1]));
-                    } else if (parts[0].equals("category")) {
-                      categoryDisplay = parts[1];
                     }
                   }
       
